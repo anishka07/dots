@@ -1,4 +1,5 @@
 require "nvchad.options"
+vim.opt.relativenumber = true
 
 -- add yours here!
 
