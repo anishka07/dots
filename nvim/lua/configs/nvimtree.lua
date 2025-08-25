@@ -1,7 +1,7 @@
 local options = {
   filters = {
-    dotfiles = false,  -- Set to false to show dotfiles like .env, .venv
-    git_ignored = false,  -- Set to false to show git ignored files
+    dotfiles = true,  -- Set to false to show dotfiles like .env, .venv
+    git_ignored = true,  -- Set to false to show git ignored files
     custom = {
       -- Remove common hidden files from custom filters
       -- You can add specific files you want to hide here
@@ -15,6 +15,9 @@ local options = {
     ignore = false,  -- Set to false to show git ignored files
   },
   renderer = {
+    -- Hide the full path display
+    root_folder_label = ":t",  -- This hides the full path at the top
+    
     highlight_git = true,
     icons = {
       show = {
@@ -59,6 +62,10 @@ local options = {
       resize_window = true,
     },
   },
+  -- Additional settings to clean up display
+  update_focused_file = {
+    enable = true,
+    update_root = false,  -- Don't change root when focusing files
+  },
 }
-
 return options

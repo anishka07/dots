@@ -3,9 +3,8 @@ local lint = require("lint")
 -- Configure linters by filetype
 lint.linters_by_ft = {
   python = { "ruff" },
-  -- Add other linters if needed
-  -- javascript = { "eslint" },
-  -- typescript = { "eslint" },
+  javascript = { "eslint" },
+  typescript = { "eslint" },
 }
 
 -- Customize ruff linter if needed

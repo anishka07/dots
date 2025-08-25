@@ -3,12 +3,12 @@ local options = {
     lua = { "stylua" },
     python = { "ruff_format", "ruff_organize_imports" },
     -- Uncomment these if you want to format other filetypes
-    -- css = { "prettier" },
-    -- html = { "prettier" },
-    -- javascript = { "prettier" },
-    -- typescript = { "prettier" },
-    -- json = { "prettier" },
-    -- yaml = { "prettier" },
+    css = { "prettier" },
+    html = { "prettier" },
+    javascript = { "prettier" },
+    typescript = { "prettier" },
+    json = { "prettier" },
+    yaml = { "prettier" },
   },
 
   -- Custom formatters

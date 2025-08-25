@@ -18,7 +18,7 @@ map("n", "<leader>pyc", "<leader>Uc", { desc = "Sync uv packages", remap = true 
 
 -- Formatting mappings
 map("n", "<leader>fm", function()
-  require("conform").format({ async = true, lsp_fallback = true })
+  require("conform").format { async = true, lsp_fallback = true }
 end, { desc = "Format file" })
 
 -- Linting mappings
@@ -63,7 +63,7 @@ end, { desc = "Run Ruff linting" })
 
 map("n", "<leader>lR", function()
   -- Run ruff directly on current file
-  local file = vim.fn.expand("%")
+  local file = vim.fn.expand "%"
   if file ~= "" then
     vim.fn.jobstart("ruff check " .. file, {
       on_stdout = function(_, data)
@@ -88,41 +88,41 @@ map("n", "<leader>lR", function()
         if code == 0 then
           vim.notify("✓ Ruff: No issues found", vim.log.levels.INFO)
         end
-      end
+      end,
     })
   end
 end, { desc = "Run Ruff check directly" })
 
 -- Ruff fix shortcuts
 map("n", "<leader>lf", function()
-  local file = vim.fn.expand("%")
+  local file = vim.fn.expand "%"
   if file ~= "" then
     vim.fn.jobstart("ruff check --fix " .. file, {
       on_exit = function(_, code)
         if code == 0 then
           vim.notify("✓ Ruff: Auto-fixed issues", vim.log.levels.INFO)
-          vim.cmd("checktime") -- Reload file if changed
+          vim.cmd "checktime" -- Reload file if changed
         else
           vim.notify("✗ Ruff: Could not fix all issues", vim.log.levels.WARN)
         end
-      end
+      end,
     })
   end
 end, { desc = "Ruff auto-fix issues" })
 
 -- Ruff format shortcut (alternative to conform)
 map("n", "<leader>lF", function()
-  local file = vim.fn.expand("%")
+  local file = vim.fn.expand "%"
   if file ~= "" then
     vim.fn.jobstart("ruff format " .. file, {
       on_exit = function(_, code)
         if code == 0 then
           vim.notify("✓ Ruff: File formatted", vim.log.levels.INFO)
-          vim.cmd("checktime") -- Reload file if changed
+          vim.cmd "checktime" -- Reload file if changed
         else
           vim.notify("✗ Ruff: Format failed", vim.log.levels.ERROR)
         end
-      end
+      end,
     })
   end
 end, { desc = "Ruff format file" })
@@ -134,21 +134,23 @@ map("n", "<leader>lc", function()
       if data and #data > 0 then
         local content = table.concat(data, "\n")
         -- Create a new buffer to show the settings
-        vim.cmd("new")
+        vim.cmd "new"
         vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.split(content, "\n"))
         vim.bo.filetype = "json"
         vim.bo.buftype = "nofile"
         vim.bo.bufhidden = "wipe"
       end
-    end
+    end,
   })
 end, { desc = "Show Ruff configuration" })
 
 -- Quick ruff check with floating window
 map("n", "<leader>ll", function()
-  local file = vim.fn.expand("%")
-  if file == "" then return end
-  
+  local file = vim.fn.expand "%"
+  if file == "" then
+    return
+  end
+
   local output = {}
   vim.fn.jobstart("ruff check " .. file .. " --output-format=text", {
     on_stdout = function(_, data)
@@ -165,10 +167,10 @@ map("n", "<leader>ll", function()
         -- Show results in floating window
         local buf = vim.api.nvim_create_buf(false, true)
         vim.api.nvim_buf_set_lines(buf, 0, -1, false, output)
-        
+
         local width = math.min(80, vim.o.columns - 4)
         local height = math.min(20, #output)
-        
+
         vim.api.nvim_open_win(buf, true, {
           relative = "cursor",
           width = width,
@@ -179,12 +181,12 @@ map("n", "<leader>ll", function()
           style = "minimal",
           title = " Ruff Issues ",
         })
-        
+
         -- Make it easier to close
         vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf })
         vim.keymap.set("n", "<Esc>", "<cmd>close<cr>", { buffer = buf })
       end
-    end
+    end,
   })
 end, { desc = "Ruff check with floating results" })
 
