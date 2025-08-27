@@ -133,7 +133,7 @@ local servers = {
           autoSearchPaths = true,
           diagnosticMode = "workspace",
           useLibraryCodeForTypes = true,
-          typeCheckingMode = "strict", -- Can be "off", "basic", or "strict"
+          typeCheckingMode = "basic", -- Can be "off", "basic", or "strict"
         },
       },
     },

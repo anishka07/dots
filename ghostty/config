@@ -3,3 +3,5 @@ theme = catppuccin-mocha.conf
 font-size = 15
 macos-option-as-alt = left
 keybind = cmd+t=unbind
+command = ~/.config/tmux/start.sh
+font-size = 14
