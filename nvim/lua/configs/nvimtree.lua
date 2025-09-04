@@ -1,3 +1,9 @@
+-- File Explorer Settings
+--
+-- Configures the file tree sidebar (like VSCode's file explorer)
+--
+-- Sets how files are displayed, which icons to use, etc.
+
 local options = {
   filters = {
     dotfiles = true,  -- Set to false to show dotfiles like .env, .venv

@@ -1,3 +1,7 @@
+-- Your custom keyboard shortcuts
+--
+-- Where you define things like "Press F2 to save" or "Ctrl+S to search"
+
 require "nvchad.mappings"
 
 local map = vim.keymap.set

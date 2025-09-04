@@ -1,3 +1,5 @@
+-- Brings together all the plugin configurations in this folder
+
 local lint = require("lint")
 
 -- Configure linters by filetype

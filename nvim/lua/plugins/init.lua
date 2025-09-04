@@ -7,4 +7,5 @@ return {
   require "plugins.debugging",
   require "plugins.testing",
   require "plugins.navigation",
+  require "plugins.lazygit",
 }

@@ -12,12 +12,24 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        -- Existing tools
         "pyright",
         "ruff",
         "ruff-lsp",
         "stylua",
         "html-lsp",
         "css-lsp",
+
+        -- Go tools
+        "gopls", -- Go language server
+        "goimports", -- Go formatter
+        "golines", -- Go line formatter
+        "delve", -- Go debugger
+
+        -- Add more language tools here as needed
+        -- "rust-analyzer", -- Rust
+        -- "tsserver",      -- TypeScript
+        -- "jdtls",         -- Java
       },
     },
   },
@@ -27,6 +39,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
+        -- Existing languages
         "python",
         "lua",
         "html",
@@ -36,7 +49,13 @@ return {
         "json",
         "yaml",
         "toml",
+
+        -- Go language
         "go",
+
+        -- Add more languages here as needed
+        -- "rust",          -- Rust
+        -- "java",          -- Java
       },
     },
   },

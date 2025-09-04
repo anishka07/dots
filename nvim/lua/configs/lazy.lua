@@ -1,3 +1,7 @@
+-- Configures how Lazy.nvim (the plugin manager) works
+--
+-- Sets update schedules, installation paths, etc.
+
 return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },

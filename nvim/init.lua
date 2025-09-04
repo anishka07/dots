@@ -1,3 +1,9 @@
+-- This is the first file Neovim loads when starting up
+--
+-- It imports all other configuration files and sets up the basic structure
+--
+-- Like a receptionist that directs visitors to the right departments
+
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
