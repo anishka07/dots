@@ -1,0 +1,14 @@
+return {
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        preset = {
+          header = [[
+A man who fears faliure over hardwork will taste both.
+          ]],
+        },
+      },
+    },
+  },
+}
