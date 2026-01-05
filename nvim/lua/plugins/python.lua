@@ -11,10 +11,11 @@ return {
           settings = {
             python = {
               analysis = {
+                diagnosticMode = "off",
                 typeCheckingMode = "basic",
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
-                diagnosticMode = "workspace",
+                -- diagnosticMode = "workspace",
               },
             },
           },
