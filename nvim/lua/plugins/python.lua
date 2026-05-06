@@ -2,24 +2,13 @@
 -- The extras import is now in lazy.lua to maintain correct order
 
 return {
-  -- Configure Python LSP (pyright)
+  -- Disable pyright in favour of ruff LSP
   {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        pyright = {
-          settings = {
-            python = {
-              analysis = {
-                diagnosticMode = "off",
-                typeCheckingMode = "basic",
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                -- diagnosticMode = "workspace",
-              },
-            },
-          },
-        },
+        pyright = { enabled = false },
+        ruff = {},
       },
     },
   },
@@ -32,22 +21,25 @@ return {
       formatters_by_ft = {
         python = { "ruff_format" },
       },
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
     },
   },
 
-  -- Configure Linter
+  -- Restore <leader>co (Organize Imports) via ruff LSP
   {
-    "mfussenegger/nvim-lint",
-    optional = true,
-    opts = {
-      linters_by_ft = {
-        python = { "ruff" },
-      },
-    },
+    "neovim/nvim-lspconfig",
+    opts = function()
+      vim.api.nvim_create_autocmd("LspAttach", {
+        pattern = "*.py",
+        callback = function(args)
+          vim.keymap.set("n", "<leader>co", function()
+            vim.lsp.buf.code_action({
+              apply = true,
+              context = { only = { "source.organizeImports" } },
+            })
+          end, { buffer = args.buf, desc = "Organize Imports" })
+        end,
+      })
+    end,
   },
 
   -- Mason: ensure Python tools are installed
@@ -55,9 +47,7 @@ return {
     "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
-        "pyright",
         "ruff",
-        "ty",
         "debugpy",
       },
     },
@@ -98,28 +88,6 @@ return {
     end,
   },
 
-  -- Venv-selector - Manual virtual environment selection
-  {
-    "linux-cultist/venv-selector.nvim",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "mfussenegger/nvim-dap",
-      "mfussenegger/nvim-dap-python",
-      { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
-    },
-    lazy = false,
-    config = function()
-      require("venv-selector").setup({
-        settings = {
-          options = {
-            notify_user_on_venv_activation = true,
-          },
-        },
-      })
-    end,
-    keys = {
-      { "<leader>vs", "<cmd>VenvSelect<cr>", desc = "Select Python Virtual Environment" },
-      { "<leader>vc", "<cmd>VenvSelectCached<cr>", desc = "Select Cached Python Virtual Environment" },
-    },
-  },
+  -- venv-selector removed: uv.nvim handles venv activation automatically
+  { "linux-cultist/venv-selector.nvim", enabled = false },
 }

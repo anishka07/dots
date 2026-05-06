@@ -1,9 +1,5 @@
 -- Completion configuration with Tab navigation (NvChad style)
 return {
-  -- Disable LazyVim's default cmp config
-  { "hrsh7th/nvim-cmp", enabled = false },
-
-  -- Set up our own cmp configuration from scratch
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
