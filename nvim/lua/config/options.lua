@@ -14,3 +14,4 @@ vim.opt.showbreak = "↪ " -- Show symbol at the start of wrapped lines
 
 -- Ensure proper display of long lines
 vim.opt.display = "lastline" -- Show as much as possible of the last line
+vim.opt.termguicolors = true
