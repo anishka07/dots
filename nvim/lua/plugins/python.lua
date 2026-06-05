@@ -1,6 +1,3 @@
--- Python development setup for LazyVim
--- The extras import is now in lazy.lua to maintain correct order
-
 return {
   -- Disable pyright in favour of ruff LSP
   {

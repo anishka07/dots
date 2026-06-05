@@ -1,0 +1,32 @@
+return {
+  "nvim-mini/mini.icons",
+  opts = {
+    extension = {
+      py = { hl = "MiniIconsBlue" },
+      rs = { hl = "MiniIconsOrange" },
+      go = { hl = "MiniIconsCyan" },
+      rb = { hl = "MiniIconsRed" },
+      ts = { hl = "MiniIconsBlue" },
+      tsx = { hl = "MiniIconsBlue" },
+      js = { hl = "MiniIconsYellow" },
+      jsx = { hl = "MiniIconsYellow" },
+      lua = { hl = "MiniIconsAzure" },
+      cs = { hl = "MiniIconsPurple" },
+      kt = { hl = "MiniIconsPurple" },
+      java = { hl = "MiniIconsOrange" },
+      cpp = { hl = "MiniIconsBlue" },
+      c = { hl = "MiniIconsBlue" },
+      css = { hl = "MiniIconsBlue" },
+      html = { hl = "MiniIconsOrange" },
+      swift = { hl = "MiniIconsOrange" },
+      toml = { hl = "MiniIconsGrey" },
+      yaml = { hl = "MiniIconsGrey" },
+      json = { hl = "MiniIconsYellow" },
+      md = { hl = "MiniIconsGrey" },
+      sh = { hl = "MiniIconsGreen" },
+    },
+    file = {
+      [".py"] = { hl = "MiniIconsBlue" },
+    },
+  },
+}
