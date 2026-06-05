@@ -1,11 +1,8 @@
 working-directory = /Users/anishkamukherjee
-theme = kanagawa.conf
-font-size = 15
+theme = catppuccin-mocha.conf  
+font-size = 14
 macos-option-as-alt = left
 keybind = cmd+t=unbind
 command = ~/.config/tmux/start.sh
-background-opacity = 0.85
 background-blur-radius = 20
 font-family = "JetBrainsMono Nerd Font"
-font-size=14
-font-size = 14
